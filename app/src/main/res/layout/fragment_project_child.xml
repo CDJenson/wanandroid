@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jenson.wanandroid.viewmodel.ProjectChildViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/project_refreshLayout"
+            onLoadMore="@{viewModel.onLoadMore}"
+            onRefresh="@{viewModel.onRefresh}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/project_recyclerView"
+                itemDecorationFirstLineVisible="@{true}"
+                itemDecorationSize="@{10}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="@string/tag_recyclerview"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <include layout="@layout/include_floating_action_button" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

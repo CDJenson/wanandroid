@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="clickProxy"
+            type="com.jenson.wanandroid.ui.LoginFragment.ClickProxy" />
+
+        <variable
+            name="viewModel"
+            type="com.jenson.wanandroid.viewmodel.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="99dp"
+            android:layout_height="99dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/ic_baseline_android_24"
+            android:tint="@color/colorPrimary" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_til_username"
+            style="@style/TextInputLayout"
+            android:layout_marginTop="40dp"
+            android:hint="@string/login_hint_username"
+            app:endIconMode="clear_text"
+            app:placeholderText="@string/login_placeholder_username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_et_username"
+                style="@style/TextInputEditText"
+                android:imeOptions="actionNext"
+                android:onTextChanged="@{clickProxy.onTextChangedOfUserName}"
+                android:text="@={viewModel.username}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_til_password"
+            style="@style/TextInputLayout"
+            android:layout_marginTop="20dp"
+            android:hint="@string/login_hint_password"
+            app:endIconMode="password_toggle"
+            app:placeholderText="@string/login_placeholder_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_et_password"
+                style="@style/TextInputEditText"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:onTextChanged="@{clickProxy.onTextChangedOfPassword}"
+                android:text="@={viewModel.password}"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/login_btn_commit"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@string/login_commit"
+            android:onClick="@{clickProxy.login}"/>
+    </LinearLayout>
+</layout>

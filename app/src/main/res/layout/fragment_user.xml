@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickProxy"
+            type="com.jenson.wanandroid.ui.UserFragment.ClickProxy" />
+
+        <variable
+            name="viewModel"
+            type="com.jenson.wanandroid.viewmodel.UserViewModel" />
+    </data>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/user_refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        app:srlEnableLoadMore="false"
+        app:srlEnablePureScrollMode="true"
+        app:srlDragRate="0.75">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="240dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{viewModel.nickname}'
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:onClick="@{()->clickProxy.login()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.45"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="CDJenson" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{@string/user_id + ":" + viewModel.id}'
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_content"
+                    app:layout_constraintTop_toBottomOf="@id/user_name"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/user_coin"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    tools:text="id:756" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/user_coin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{@string/user_coin + ":" + viewModel.coin}'
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="22dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_content"
+                    app:layout_constraintLeft_toRightOf="@id/user_id"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@id/user_id"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    tools:text="积分:1990" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/user_item_article"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/margin"
+                android:paddingLeft="@dimen/margin"
+                android:paddingRight="@dimen/margin"
+                android:background="@drawable/bg_user_list">
+
+                <LinearLayout
+                    style="@style/ListItem"
+                    android:onClick='@{()->clickProxy.checkLogin(clickProxy.collectArticle)}'>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_icon"
+                        android:src="@drawable/ic_baseline_bookmark_24"
+                        android:tint="@color/colorPrimary"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItem_title"
+                        android:text="@string/user_collect_article" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_arrow"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ListItem"
+                    android:onClick='@{()->clickProxy.checkLogin(clickProxy.shareArticle)}'>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_icon"
+                        android:src="@drawable/ic_baseline_share_24"
+                        android:tint="@color/colorPrimary"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItem_title"
+                        android:text="@string/user_share_article" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_arrow"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ListItem"
+                    android:onClick='@{()->clickProxy.checkLogin(clickProxy.collectWebsite)}'>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_icon"
+                        android:src="@drawable/ic_baseline_web_24"
+                        android:tint="@color/colorPrimary" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItem_title"
+                        android:text="@string/user_collect_website" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_arrow"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ListItem"
+                    android:onClick='@{()->clickProxy.checkLogin(clickProxy.shareWebsite)}'>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_icon"
+                        android:src="@drawable/ic_baseline_web_asset_24"
+                        android:tint="@color/colorPrimary"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItem_title"
+                        android:text="@string/user_share_website" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_arrow"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/divider"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin"/>
+
+                <LinearLayout
+                    style="@style/ListItem"
+                    android:onClick='@{()->clickProxy.checkLogin(clickProxy.setting)}'>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_icon"
+                        android:src="@drawable/ic_baseline_settings_24"
+                        android:tint="@color/colorAccent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItem_title"
+                        android:text="@string/user_setting" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_arrow"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/ListItem"
+                    android:onClick='@{()->clickProxy.checkLogin(clickProxy.openSouce)}'>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_icon"
+                        android:src="@drawable/ic_baseline_code_24"
+                        android:tint="@color/colorAccent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/ListItem_title"
+                        android:text="@string/user_open_source" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        style="@style/ListItem_arrow"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</layout>

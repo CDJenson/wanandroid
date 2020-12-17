@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.jenson.wanandroid.data.bean.Article" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/list_item_margin"
+        android:layout_marginRight="@dimen/list_item_margin"
+        android:minHeight="96dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp"
+        app:contentPaddingTop="@dimen/list_item_v_padding"
+        app:contentPaddingBottom="@dimen/list_item_v_padding"
+        app:contentPaddingLeft="@dimen/list_item_h_padding"
+        app:contentPaddingRight="@dimen/list_item_h_padding">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{item.title}'
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_item_title"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="Kotlin+协程+Jetpack" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/item_article_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/list_item_child_margin"
+                android:foregroundGravity="left"
+                app:flow_horizontalGap="8dp"
+                app:flow_verticalGap="5dp"
+                app:flow_wrapMode="aligned"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_article_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_article_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/list_item_child_margin"
+                android:text='@{item.author.length() > 0 ? @string/item_author +": "+ item.author : @string/item_shareUser +": "+ item.shareUser}'
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_item_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_article_tags"
+                tool:text="CDJenson" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_article_chapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text='@{@string/item_chapter +": "+item.superChapterName + "/"+item.chapterName}'
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_item_content"
+                app:layout_constraintBaseline_toBaselineOf="@id/item_article_user"
+                app:layout_constraintLeft_toRightOf="@id/item_article_user"
+                tool:text="Kotlin-Jetpack" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_article_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/list_item_child_margin"
+                android:text='@{@string/item_time + ": " + item.niceDate}'
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_article_user"
+                tool:text="10小时前" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/item_article_collect"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_baseline_favorite_24"
+                app:layout_constraintBottom_toBottomOf="@id/item_article_time"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/item_article_time" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

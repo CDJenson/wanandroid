@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="@string/main_bottom_nav_title_home" />
+
+    <item
+        android:id="@+id/navigation_project"
+        android:icon="@drawable/ic_baseline_project_24"
+        android:title="@string/main_bottom_nav_title_project" />
+
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@drawable/ic_outline_person_24"
+        android:title="@string/main_bottom_nav_title_user" />
+</menu>

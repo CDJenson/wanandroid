@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/primary_dark</color>
+    <color name="colorAccent">@color/accent</color>
+
+    <color name="text_primary">@color/primary_text</color>
+    <color name="text_secondary">@color/secondary_text</color>
+    <color name="text_hint">#8e9dac</color>
+    <color name="list_divider">@color/divider</color>
+
+    <color name="red">#ff585d</color>
+</resources>

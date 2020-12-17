@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="list_item_docration_size">10dp</dimen>
+    <dimen name="list_item_margin">8dp</dimen>
+    <dimen name="list_item_v_padding">12dp</dimen>
+    <dimen name="list_item_h_padding">8dp</dimen>
+    <dimen name="list_item_child_margin">10dp</dimen>
+
+    <dimen name="text_title">16sp</dimen>
+    <dimen name="text_subtitle">14sp</dimen>
+    <dimen name="text_content">14sp</dimen>
+    <dimen name="text_item_title">14sp</dimen>
+    <dimen name="text_item_content">12sp</dimen>
+    <dimen name="text_item_tag">10sp</dimen>
+
+</resources>

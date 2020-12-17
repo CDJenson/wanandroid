@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jenson.wanandroid.viewmodel.ProjectViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/project_rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/project_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:tabBackground="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabMode="scrollable"
+            app:tabTextColor="@android:color/white"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/project_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</layout>

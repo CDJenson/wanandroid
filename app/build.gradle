@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.jenson.wanandroid"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    def jetpack_version = "2.2.0"
+    def nav_version = "2.3.0"
+    def retrofit_version = "2.9.0"
+    def smart_version = "2.0.1"
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //jetpack
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${jetpack_version}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${jetpack_version}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${jetpack_version}"
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    //http
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    //image
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //refreshlayout
+    implementation  "com.scwang.smart:refresh-layout-kernel:$smart_version"
+    implementation  "com.scwang.smart:refresh-header-material:$smart_version"
+    implementation  "com.scwang.smart:refresh-footer-classics:$smart_version"
+    //adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //banner
+    implementation "com.youth.banner:banner:2.1.0"
+    //other
+    implementation "com.blankj:utilcodex:1.29.0"
+    implementation "com.kingja.loadsir:loadsir:1.3.8"
+    implementation "com.tencent.tbs.tbssdk:sdk:43903"
+
+    //test
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
